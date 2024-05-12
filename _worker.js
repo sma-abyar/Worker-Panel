@@ -789,7 +789,7 @@ const getNormalConfigs = async (env, hostName, client) => {
     ];
     let configNumber = 1;
     Addresses.forEach((addr) => {
-        let remark = `SC - ${configNumber}`;
+        let remark = `SCVPN - ${configNumber}`;
         configNumber++;
         remark = remark.length <= 30 ? remark : `${remark.slice(0,29)}...`;
 
