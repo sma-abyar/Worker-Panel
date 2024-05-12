@@ -7,7 +7,7 @@ import { connect } from 'cloudflare:sockets';
 
 // How to generate your own UUID:
 // https://www.uuidgenerator.net/
-let userID = 'SCVPN';
+let userID = 'f8d99aea-9a63-446c-ae40-6e3f3982e1c5';
 
 // https://www.nslookup.io/domains/cdn.xn--b6gac.eu.org/dns-records/
 // https://www.nslookup.io/domains/cdn-all.xn--b6gac.eu.org/dns-records/
@@ -55,7 +55,7 @@ export default {
                             },
                         });
                         
-                    case `/sub/${userID}`:
+                    case `/sub/`:
 
                         if (client === 'sfa') {
                             const BestPingSFA = await getSingboxConfig(env, host);
@@ -64,7 +64,7 @@ export default {
                         const normalConfigs = await getNormalConfigs(env, host, client);
                         return new Response(normalConfigs, { status: 200 });                        
 
-                    case `/fragsub/${userID}`:
+                    case `/fragsub/`:
 
                         let fragConfigs = await getFragmentConfigs(env, host, 'v2ray');
                         fragConfigs = fragConfigs.map(config => config.config);
@@ -1648,10 +1648,10 @@ const renderHomePage = async (request, env, hostName, fragConfigs) => {
                             </div>
                         </td>
 						<td>
-                            <button onclick="openQR('https://${hostName}/sub/${userID}#Normal', 'Normal Subscription')" style="margin-bottom: 8px;">
+                            <button onclick="openQR('https://${hostName}/sub/', 'Normal Subscription')" style="margin-bottom: 8px;">
                                 QR Code&nbsp;<span class="material-symbols-outlined">qr_code</span>
                             </button>
-                            <button onclick="copyToClipboard('https://${hostName}/sub/${userID}#Normal', false)">
+                            <button onclick="copyToClipboard('https://${hostName}/sub/', false)">
                                 Copy Sub<span class="material-symbols-outlined">format_list_bulleted</span>
                             </button>
                         </td>
@@ -1714,10 +1714,10 @@ const renderHomePage = async (request, env, hostName, fragConfigs) => {
                             </div>
                         </td>
                         <td>
-                            <button onclick="openQR('https://${hostName}/fragsub/SC-Fragment', 'Fragment Subscription')" style="margin-bottom: 8px;">
+                            <button onclick="openQR('https://${hostName}/fragsub/', 'Fragment Subscription')" style="margin-bottom: 8px;">
                                 QR Code&nbsp;<span class="material-symbols-outlined">qr_code</span>
                             </button>
-                            <button onclick="copyToClipboard('https://${hostName}/fragsub/SC-Fragment', true)">
+                            <button onclick="copyToClipboard('https://${hostName}/fragsub/', true)">
                                 Copy Sub<span class="material-symbols-outlined">format_list_bulleted</span>
                             </button>
                         </td>
